@@ -14,14 +14,14 @@
 (define-derived-mode wayscript-mode html-mode
   "wayscript"
   "Major mode for editing XHTML wayscript"
+(message "in wayscript-mode") ; TEST
   (font-lock-add-keywords nil
    '(
      ;; Cog
      ;; ---
-     ("<cog:\\(cast\\)[ >\n]" 1 'wayscript-cog-accent-face t t)
-     ("<\\(cog\\):\\(act\\|loop\\|script\\)[ >\n]" (1 'wayscript-cog-accent-face t t)
-      (2 'wayscript-cog-face t))
-       ;;; exclusive test might beat inclusive here, but unsure how (no lookaround assertions in Emacs)
+     ("<cog:\\(cast\\)[ >\n]" 1 'wayscript-cog-face t t)
+     (" cog:\\(lid\\) *= *\\(['\"]\\)[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
+     (" cog:\\(link\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
 
      ;; Cog composer
      ;; ------------
@@ -29,8 +29,8 @@
       ;;  ''''''''''''''''''''''''''ST''''''''''''''''''''''''     '''Q'''
       ;; ST  start tag
       ;;  Q  qualifying text
-      (1 'wayscript-cog-face t)(2 'wayscript-cog-accent-face)(3 'wayscript-cog-accent-face nil t))
-     ("</cog:\\(?:comprising\\|including\\)\\(>\\)" 1 'wayscript-cog-face t) ; end tag
+      (1 'wayscript-deprecated-face t)(2 'wayscript-html-face)(3 'wayscript-html-face nil t))
+     ("</cog:\\(?:comprising\\|including\\)\\(>\\)" 1 'wayscript-deprecated-face t) ; end tag
 
      ;; HTML inclusion
      ;; --------------
@@ -40,20 +40,17 @@
      ;; ------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; start tag name
 
+     ;; Waybit commitment
+     ;; -----------------
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/actor/#commitment\\)\\2"
+      1 'wayscript-commitment-face t)
+
      ;; Waybit step
      ;; -----------
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)[ >\n]" ; prefixed
       (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
       (1 'wayscript-step-face t)) ; unprefixed singleton
-
-     ;; Waylink
-     ;; -------
-     (" cog:link *= *\\(['\"]\\)[^\n]*#\\([_[:alpha:]][-._[:alnum:]]*\\)\\1"
-      2 'wayscript-link-source-face t)
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/actor/#commitment\\)\\2"
-      1 'wayscript-commitment-face t)
-     (" cog:lid *= *['\"]\\([_[:alpha:]][-._[:alnum:]]*\\)" 1 'wayscript-link-target-face t)
 
      )
    )
@@ -81,17 +78,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for cog elements."
-  :group 'basic-faces)
-(defface wayscript-cog-accent-face
-  '((((type tty pc) (class color) (background light)) (:foreground "red"))
-    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
-    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
-    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
-    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
-    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
-    (t (:bold t :italic t)))
-  "Wayscript face for accents within the cog elements."
+  "Wayscript face for cog elements and attributes."
   :group 'basic-faces)
 (defface wayscript-commitment-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -103,6 +90,16 @@
     (t (:bold t :italic t)))
   "Wayscript face for waylink source nodes that target a commitment to act."
   :group 'basic-faces)
+(defface wayscript-deprecated-face
+  '((((type tty pc) (class color) (background light)) (:foreground "red"))
+    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
+    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
+    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
+    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
+    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
+    (t (:bold t :italic t)))
+  "A wayscript face that's slated for removal."
+  :group 'basic-faces)
 (defface wayscript-html-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
     (((type tty pc) (class color) (background dark)) (:foreground "red1"))
@@ -112,26 +109,6 @@
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
   "Wayscript face for embeddable HTML elements."
-  :group 'basic-faces)
-(defface wayscript-link-source-face
-  '((((type tty pc) (class color) (background light)) (:foreground "red"))
-    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
-    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
-    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
-    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
-    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
-    (t (:bold t :italic t)))
-  "Wayscript face for waylink source nodes."
-  :group 'basic-faces)
-(defface wayscript-link-target-face
-  '((((type tty pc) (class color) (background light)) (:foreground "red"))
-    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
-    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
-    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
-    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
-    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
-    (t (:bold t :italic t)))
-  "Wayscript face for waylink target nodes."
   :group 'basic-faces)
 (defface wayscript-step-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
