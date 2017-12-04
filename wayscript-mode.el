@@ -14,7 +14,6 @@
 (define-derived-mode wayscript-mode html-mode
   "wayscript"
   "Major mode for editing XHTML wayscript"
-(message "in wayscript-mode") ; TEST
   (font-lock-add-keywords nil
    '(
      ;; Cog
