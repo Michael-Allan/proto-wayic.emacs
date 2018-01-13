@@ -46,7 +46,7 @@
 
      ;; Waybit step
      ;; -----------
-     ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)[ >\n]" ; prefixed
+     ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; prefixed
       (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
       (1 'wayscript-step-face t)) ; unprefixed singleton
