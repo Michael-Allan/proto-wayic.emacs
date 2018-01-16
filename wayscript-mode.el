@@ -136,4 +136,4 @@
 
 
 
-;; Copyright © 2017 Michael Allan and contributors.  Licence MIT.
+;; Copyright © 2017-2018 Michael Allan and contributors.  Licence MIT.
