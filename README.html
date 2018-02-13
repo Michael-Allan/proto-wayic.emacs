@@ -44,7 +44,7 @@
             var traversal = document.createNodeIterator( document.body, NodeFilter.SHOW_ELEMENT );
             if( !traversal ) return;
 
-            for( ;; )
+            for( traversal.nextNode()/*onto the body element itself*/;; )
             {
                 var t = traversal.nextNode();
                 if( !t ) break;
