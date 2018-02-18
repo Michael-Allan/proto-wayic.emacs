@@ -41,7 +41,7 @@
 
      ;; Waybit commitment
      ;; -----------------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/actor/#commitment\\)\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#commitment\\)\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit step
