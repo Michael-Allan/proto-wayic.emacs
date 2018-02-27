@@ -16,14 +16,12 @@
   "Major mode for editing XHTML wayscript"
   (font-lock-add-keywords nil
    '(
-     ;; Cog
-     ;; ---
+     ;; Cast
+     ;; ----
      ("<cog:\\(cast\\)[ >\n]" 1 'wayscript-cog-face t t)
-     (" cog:\\(lid\\) *= *\\(['\"]\\)[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
-     (" cog:\\(link\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
 
-     ;; Cog composer
-     ;; ------------
+     ;; Composer
+     ;; --------
      ("\\(<\\)cog:\\(comprising\\|including\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
       ;;  ''''''''''''''''''''''''''ST''''''''''''''''''''''''     '''Q'''
       ;; ST  start tag
@@ -50,6 +48,11 @@
       (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
       (1 'wayscript-step-face t)) ; unprefixed singleton
+
+     ;; Waylink
+     ;; -------
+     (             " \\(id\\) *= *\\(['\"]\\)[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
+     (" cog:\\(link\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
 
      )
    )
