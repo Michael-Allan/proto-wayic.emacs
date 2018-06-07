@@ -11,10 +11,13 @@
 ;;
 ;; Screen shot of font locking: http://reluk.ca/project/wayic/emacs/screen_shot.png
 
+
 (define-derived-mode wayscript-mode html-mode
   "wayscript"
   "Major mode for editing XHTML wayscript"
   (font-lock-add-keywords nil
+    ;;; Use of *font-lock-defaults* might be preferable.  See however the related notes
+    ;;; in http://reluk.ca/sys/host/havoc/usr/local/share/emacs/site-lisp/js-mca-mode.el
    '(
      ;; Cast
      ;; ----
