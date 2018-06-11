@@ -49,10 +49,10 @@
                 var t = traversal.nextNode();
                 if( !t ) break;
 
-                if( t.localName != 'a' ) continue;
+                if( t.localName !== 'a' ) continue;
 
                 var maybeFinished = false;
-                if( !isCorrect_reluk && t.href == 'http://reluk.ca/project/wayic/emacs/' )
+                if( !isCorrect_reluk && t.href === 'http://reluk.ca/project/wayic/emacs/' )
                 {
                   // Disable useless link, append text directions instead
                   // --------------------
@@ -64,7 +64,7 @@
                 if( !isCorrect_github )
                 {
                     var text = asText( t.firstChild );
-                    if( text && text.data == 'GitHub' )
+                    if( text && text.data === 'GitHub' )
                     {
                         text = asText( t.nextSibling );
                         if( text )
@@ -84,7 +84,7 @@
 
         /** @return The given node if it's a text node, otherwise null.
           */
-        function asText( node ) { return node.nodeType == /*Node.TEXT_NODE*/3? node : null; }
+        function asText( node ) { return node.nodeType === /*Node.TEXT_NODE*/3? node : null; }
 
 
         var docLoc = document.URL;
