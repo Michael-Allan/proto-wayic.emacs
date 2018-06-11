@@ -19,10 +19,6 @@
     ;;; Use of *font-lock-defaults* might be preferable.  See however the related notes
     ;;; in http://reluk.ca/sys/host/havoc/usr/local/share/emacs/site-lisp/js-mca-mode.el
    '(
-     ;; Cast
-     ;; ----
-     ("<cog:\\(cast\\)[ >\n]" 1 'wayscript-cog-face t t)
-
      ;; Composer
      ;; --------
      ("\\(<\\)cog:\\(comprising\\|including\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
