@@ -36,13 +36,13 @@
      ;; ------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; start tag name
 
-     ;; Waybit commitment
-     ;; -----------------
+     ;; Waybit: Commitment declaration
+     ;; ------------------------------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#commitment\\)\\2"
       1 'wayscript-commitment-face t)
 
-     ;; Waybit step
-     ;; -----------
+     ;; Waybit: Step
+     ;; ------------
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; prefixed
       (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
@@ -69,7 +69,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for waybit elements."
+  "Wayscript face for the start tag of waybits."
   :group 'basic-faces)
 (defface wayscript-cog-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -79,7 +79,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for cog elements and attributes."
+  "Wayscript face for cog attributes."
   :group 'basic-faces)
 (defface wayscript-commitment-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -89,7 +89,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for waylink source nodes that target a commitment to act."
+  "Wayscript face for the start tag of commitment declarations."
   :group 'basic-faces)
 (defface wayscript-deprecated-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -99,7 +99,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "A wayscript face that's slated for removal."
+  "This wayscript face is slated for removal."
   :group 'basic-faces)
 (defface wayscript-html-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -109,7 +109,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for embeddable HTML elements."
+  "Wayscript face for the start tag of embeddable HTML elements."
   :group 'basic-faces)
 (defface wayscript-step-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -119,7 +119,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for step elements."
+  "Wayscript face for the start tag of steps."
   :group 'basic-faces)
 (defface wayscript-step-accent-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -129,7 +129,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for accents within step elements."
+  "Wayscript face for accents within steps."
   :group 'basic-faces)
 
 
