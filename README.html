@@ -30,24 +30,24 @@
             </div>
         </li>
     </ul>
-<script> // this all renders when viewed on GitHub, but no matter
+<script> // This all renders when viewed on GitHub, but no matter
     ( function()
     {
 
         /** Corrects hyperlinks and related content of this document under the assumption
-          * that it's *not* served from GitHub.
+          * that it is *not* served from GitHub.
           */
         function amend()
         {
+            if( typeof document.createNodeIterator !== 'function' ) return;
+
             var isCorrect_github = false;
             var isCorrect_reluk = docLoc.indexOf('//reluk.ca/') < 0;
             var traversal = document.createNodeIterator( document.body, NodeFilter.SHOW_ELEMENT );
-            if( !traversal ) return;
-
             for( traversal.nextNode()/*onto the body element itself*/;; )
             {
                 var t = traversal.nextNode();
-                if( !t ) break;
+                if( t === null ) break;
 
                 if( t.localName !== 'a' ) continue;
 
@@ -67,11 +67,11 @@
                     if( text && text.data === 'GitHub' )
                     {
                         text = asText( t.nextSibling );
-                        if( text )
+                        if( text !== null )
                         {
                           // Remove misleading text directions, enable link instead
                           // ---------------------------------
-                            text.replaceData( 0, text.length, ' *' ); // leaving only the last bit
+                            text.replaceData( 0, text.length, ' *' ); // Leaving only the last bit
                             t.setAttribute( 'href', 'https://github.com/Michael-Allan/wayic.emacs/' );
                             isCorrect_github = maybeFinished = true;
                         }
@@ -82,7 +82,7 @@
         }
 
 
-        /** @return The given node if it's a text node, otherwise null.
+        /** @return The given node if it is a text node, otherwise null.
           */
         function asText( node ) { return node.nodeType === /*Node.TEXT_NODE*/3? node : null; }
 
@@ -92,7 +92,7 @@
 
     ////////////////////
 
-        if( docLoc.indexOf('//github.com/') < 0) amend();
+        if( docLoc.indexOf('//github.com/') < 0 ) amend();
 
     }() );
     </script>
