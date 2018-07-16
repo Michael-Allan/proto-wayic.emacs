@@ -69,8 +69,8 @@
                         text = asText( t.nextSibling );
                         if( text !== null )
                         {
-                          // Remove misleading text directions, enable link instead
-                          // ---------------------------------
+                          // Remove deceptive text directions, enable link instead
+                          // --------------------------------
                             text.replaceData( 0, text.length, ' *' ); // Leaving only the last bit
                             t.setAttribute( 'href', 'https://github.com/Michael-Allan/wayic.emacs/' );
                             isCorrect_github = maybeFinished = true;
