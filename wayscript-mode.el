@@ -21,12 +21,13 @@
    '(
      ;; Composer
      ;; --------
-     ("\\(<\\)cog:\\(comprising\\|including\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
-      ;;  ''''''''''''''''''''''''''ST''''''''''''''''''''''''     '''Q'''
+     ("\\(<\\)cog:\\(group\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
+      ;;  '''''''''''''''''ST''''''''''''''''     '''Q'''
       ;; ST  start tag
       ;;  Q  qualifying text
-      (1 'wayscript-deprecated-face t)(2 'wayscript-html-face)(3 'wayscript-html-face nil t))
-     ("</cog:\\(?:comprising\\|including\\)\\(>\\)" 1 'wayscript-deprecated-face t) ; end tag
+      (1 'wayscript-bracketing-face t)(2 'wayscript-group-face)
+      (3 'wayscript-qualifying-text-face nil t))
+     ("</cog:group\\(>\\)" 1 'wayscript-bracketing-face t) ; end tag
 
      ;; HTML inclusion
      ;; --------------
@@ -71,6 +72,16 @@
     (t (:bold t :italic t)))
   "Wayscript face for the start tag of waybits."
   :group 'basic-faces)
+(defface wayscript-bracketing-face
+  '((((type tty pc) (class color) (background light)) (:foreground "red"))
+    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
+    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
+    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
+    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
+    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
+    (t (:bold t :italic t)))
+  "Wayscript face for the bracketing of *group* elements."
+  :group 'basic-faces)
 (defface wayscript-cog-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
     (((type tty pc) (class color) (background dark)) (:foreground "red1"))
@@ -79,7 +90,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for cog attributes."
+  "Wayscript face for *cog* attributes."
   :group 'basic-faces)
 (defface wayscript-commitment-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -91,7 +102,7 @@
     (t (:bold t :italic t)))
   "Wayscript face for the start tag of commitment declarations."
   :group 'basic-faces)
-(defface wayscript-deprecated-face
+(defface wayscript-group-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
     (((type tty pc) (class color) (background dark)) (:foreground "red1"))
     (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
@@ -99,7 +110,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "This wayscript face is slated for removal."
+  "Wayscript face for the start tag of *group* elements."
   :group 'basic-faces)
 (defface wayscript-html-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -110,6 +121,16 @@
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
   "Wayscript face for the start tag of embeddable HTML elements."
+  :group 'basic-faces)
+(defface wayscript-qualifying-text-face
+  '((((type tty pc) (class color) (background light)) (:foreground "red"))
+    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
+    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
+    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
+    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
+    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
+    (t (:bold t :italic t)))
+  "Wayscript face for the qualifying text of *group* elements."
   :group 'basic-faces)
 (defface wayscript-step-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
