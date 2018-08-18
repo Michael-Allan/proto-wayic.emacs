@@ -1,15 +1,16 @@
 ;; A major mode for editing wayscript.
 ;;
-;; Usage for your .emacs configuration file:
+;; Usage for your Emacs configuration file:
 ;;
 ;;    (require 'wayscript-mode)
-;;    (add-to-list 'auto-mode-alist '("/way\\.xht$" . wayscript-mode))
+;;    (add-to-list 'auto-mode-alist '("/waycast/.+\\.xht$" . wayscript-mode))
 ;;
 ;; Working example:
 ;;     http://reluk.ca/.emacs
 ;;     http://reluk.ca/.Xresources
 ;;
-;; Screen shot of font locking: http://reluk.ca/project/wayic/emacs/screen_shot.png
+;; Screen shot of the result, showing the font locking:
+;; http://reluk.ca/project/wayic/emacs/screen_shot.png
 
 
 (define-derived-mode wayscript-mode html-mode
@@ -27,11 +28,11 @@
       ;;  Q  qualifying text
       (1 'wayscript-bracketing-face t)(2 'wayscript-group-face)
       (3 'wayscript-qualifying-text-face nil t))
-     ("</cog:group\\(>\\)" 1 'wayscript-bracketing-face t) ; end tag
+     ("</cog:group\\(>\\)" 1 'wayscript-bracketing-face t) ; End tag
 
      ;; HTML inclusion
      ;; --------------
-     ("<html:\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-html-face t) ; start tag name
+     ("<html:\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-html-face t) ; Start tag name
 
      ;; Referential jointer
      ;; -------------------
@@ -40,7 +41,7 @@
 
      ;; Waybit
      ;; ------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; start tag name
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; Start tag name
 
      ;; Waybit: Commitment declaration
      ;; ------------------------------
@@ -49,10 +50,10 @@
 
      ;; Waybit: Step
      ;; ------------
-     ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; prefixed
+     ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; Prefixed
       (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
-      (1 'wayscript-step-face t)) ; unprefixed singleton
+      (1 'wayscript-step-face t)) ; Unprefixed singleton
 
      )
    )
@@ -60,7 +61,7 @@
 
 
 
-;; You'll want to customize these faces.  The defaults below aren't very good.
+;; You will want to customize these faces.  The defaults below are not very good.
 ;; Working example of customization: http://reluk.ca/.Xresources
 (defface wayscript-bit-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
