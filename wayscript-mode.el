@@ -15,7 +15,7 @@
 
 (define-derived-mode wayscript-mode html-mode
   "wayscript"
-  "Major mode for editing XHTML wayscript"
+  "Major mode for editing wayscript"
   (font-lock-add-keywords nil
     ;;; Use of *font-lock-defaults* might be preferable.  See however the related notes
     ;;; in http://reluk.ca/sys/host/havoc/usr/local/share/emacs/site-lisp/js-mca-mode.el
@@ -26,7 +26,7 @@
       ;;  '''''''''''''''''ST''''''''''''''''     '''Q'''
       ;; ST  start tag
       ;;  Q  qualifying text
-      (1 'wayscript-bracketing-face t)(2 'wayscript-group-face)
+      (1 'wayscript-bracketing-face t) (2 'wayscript-group-face)
       (3 'wayscript-qualifying-text-face nil t))
      ("</cog:group\\(>\\)" 1 'wayscript-bracketing-face t) ; End tag
 
@@ -43,15 +43,15 @@
      ;; ------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; Start tag name
 
-     ;; Waybit: Commitment declaration
-     ;; ------------------------------
+     ;; Waybit: Commitment jointer
+     ;; --------------------------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#commitment\\)\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit: Step
      ;; ------------
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; Prefixed
-      (1 'wayscript-step-face t)(2 font-lock-comment-face t t)(3 'wayscript-step-accent-face t t))
+      (1 'wayscript-step-face t) (2 font-lock-comment-face t t) (3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
       (1 'wayscript-step-face t)) ; Unprefixed singleton
 
@@ -101,7 +101,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for the start tag of commitment declarations."
+  "Wayscript face for the start tag of commitment jointers."
   :group 'basic-faces)
 (defface wayscript-group-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
