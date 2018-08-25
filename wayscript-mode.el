@@ -45,7 +45,7 @@
 
      ;; Waybit: Commitment jointer
      ;; --------------------------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#commitment\\)\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#resolve\\)\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit: Step
