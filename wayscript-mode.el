@@ -36,23 +36,23 @@
 
      ;; Referential jointer
      ;; -------------------
-     (             " \\(id\\) *= *\\(['\"]\\)[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
-     (" cog:\\(link\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]*\\2" 1 'wayscript-cog-face t)
+     (             " \\(id\\) *= *\\(['\"]\\) *[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-cog-face t)
+     (" cog:\\(join\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-cog-face t)
 
      ;; Waybit
      ;; ------
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; Start tag name
 
-     ;; Waybit: Commitment jointer
+     ;; Waybit: Commitment jointer  (probable, root)
      ;; --------------------------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:link *= *\\(['\"]\\) *\\(/#resolve\\)\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:join *= *\\(['\"]\\) *\\(/way\.xht#resolve\\) *\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit: Step
      ;; ------------
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; Prefixed
       (1 'wayscript-step-face t) (2 font-lock-comment-face t t) (3 'wayscript-step-accent-face t t))
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\)data:,wayscript\\.bit\\.step\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\) *data:,wayscript\\.bit\\.step *\\2"
       (1 'wayscript-step-face t)) ; Unprefixed singleton
 
      )
