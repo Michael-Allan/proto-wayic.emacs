@@ -22,13 +22,13 @@
    '(
      ;; Composer
      ;; --------
-     ("\\(<\\)cog:\\(group\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
+     ("\\(<\\)way:\\(group\\)\\>\\(?:[^>\n]*> *\\([^<\n]+\\)\\)?"
       ;;  '''''''''''''''''ST''''''''''''''''     '''Q'''
       ;; ST  start tag
       ;;  Q  qualifying text
       (1 'wayscript-bracketing-face t) (2 'wayscript-group-face)
       (3 'wayscript-qualifying-text-face nil t))
-     ("</cog:group\\(>\\)" 1 'wayscript-bracketing-face t) ; End tag
+     ("</way:group\\(>\\)" 1 'wayscript-bracketing-face t) ; End tag
 
      ;; HTML inclusion
      ;; --------------
@@ -36,8 +36,8 @@
 
      ;; Referential jointer
      ;; -------------------
-     (             " \\(id\\) *= *\\(['\"]\\) *[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-cog-face t)
-     (" cog:\\(join\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-cog-face t)
+     (             " \\(id\\) *= *\\(['\"]\\) *[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-top-face t)
+     (" way:\\(join\\) *= *\\(['\"]\\)[^\n]*#[_[:alpha:]][-._[:alnum:]]* *\\2" 1 'wayscript-top-face t)
 
      ;; Waybit
      ;; ------
@@ -82,16 +82,6 @@
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
   "Wayscript face for the bracketing of *group* elements."
-  :group 'basic-faces)
-(defface wayscript-cog-face
-  '((((type tty pc) (class color) (background light)) (:foreground "red"))
-    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
-    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
-    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
-    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
-    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
-    (t (:bold t :italic t)))
-  "Wayscript face for *cog* attributes."
   :group 'basic-faces)
 (defface wayscript-commitment-face
   '((((type tty pc) (class color) (background light)) (:foreground "red"))
@@ -152,6 +142,17 @@
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
   "Wayscript face for accents within steps."
+  :group 'basic-faces)
+(defface wayscript-top-face
+  '((((type tty pc) (class color) (background light)) (:foreground "red"))
+    (((type tty pc) (class color) (background dark)) (:foreground "red1"))
+    (((class grayscale) (background light)) (:foreground "DimGray" :bold t :italic t))
+    (((class grayscale) (background dark)) (:foreground "LightGray" :bold t :italic t))
+    (((class color) (background light)) (:foreground "rgb:FF/00/00"))
+    (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
+    (t (:bold t :italic t)))
+  "Wayscript face for attributes in the top namespace of wayscript proper."
+    ;;; § Namespacing § hierarchy, http://reluk.ca/project/wayic/script/doc.task
   :group 'basic-faces)
 
 
