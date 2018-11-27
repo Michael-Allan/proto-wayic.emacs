@@ -1,4 +1,4 @@
-;; A major mode for editing wayscript.
+;; A major mode for editing Wayscript.
 ;;
 ;; Usage for your Emacs configuration file:
 ;;
@@ -14,8 +14,8 @@
 
 
 (define-derived-mode wayscript-mode html-mode
-  "wayscript"
-  "Major mode for editing wayscript"
+  "Wayscript"
+  "Major mode for editing Wayscript"
   (font-lock-add-keywords nil
     ;;; Use of *font-lock-defaults* might be preferable.  See however the related notes
     ;;; in http://reluk.ca/sys/host/havoc/usr/local/share/emacs/site-lisp/js-mca-mode.el
@@ -151,7 +151,7 @@
     (((class color) (background light)) (:foreground "rgb:FF/00/00"))
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
-  "Wayscript face for attributes in the top namespace of wayscript proper."
+  "Wayscript face for attributes in the top namespace of Wayscript proper."
     ;;; § Namespacing § hierarchy, http://reluk.ca/project/wayic/script/doc.task
   :group 'basic-faces)
 
