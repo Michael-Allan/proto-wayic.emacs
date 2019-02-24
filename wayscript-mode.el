@@ -45,7 +45,7 @@
 
      ;; Waybit: Commitment jointer  (probable, root)
      ;; --------------------------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bcog:join *= *\\(['\"]\\) *\\(/way\.xht#resolve\\) *\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bway:join *= *\\(['\"]\\) *\\(/way\.xht#resolve\\) *\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit: Step
