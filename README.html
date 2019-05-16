@@ -19,12 +19,12 @@
     The files for this project are released under an <a href='LICENCE.txt'>MIT licence</a>.
     </p>
 <ul lang='en-CA'>
-    <li>Readable copy of latest files at <a href='http://reluk.ca/project/wayic/emacs/'>reluk.ca</a></li>
+    <li>Readable copy of latest files at <a href='http://reluk.ca/project/proto-wayic/emacs/'>reluk.ca</a></li>
     <li>Browsable revision history at <a>GitHub</a> (top of this page) *</li>
     <li>
         Bare <code>.git</code> clones at
-        <a href=    'http://reluk.ca/var/repo/git/wayic.emacs.git'>reluk.ca</a> or
-        <a href='https://github.com/Michael-Allan/wayic.emacs.git'>GitHub</a> *
+        <a href=    'http://reluk.ca/var/repo/git/proto-wayic.emacs.git'>reluk.ca</a> or
+        <a href='https://github.com/Michael-Allan/proto-wayic.emacs.git'>GitHub</a> *
         <div style='font-size:0.85em; margin-top:1em; opacity:0.7'>
             * Branch reluk.ca is liable to be rebased, master is stable.
             </div>
@@ -52,7 +52,7 @@
                 if( t.localName !== 'a' ) continue;
 
                 var maybeFinished = false;
-                if( !isCorrect_reluk && t.href === 'http://reluk.ca/project/wayic/emacs/' )
+                if( !isCorrect_reluk && t.href === 'http://reluk.ca/project/proto-wayic/emacs/' )
                 {
                   // Disable useless link, append text directions instead
                   // --------------------
@@ -72,7 +72,7 @@
                           // Remove deceptive text directions, enable link instead
                           // --------------------------------
                             text.replaceData( 0, text.length, ' *' ); // Leaving only the last bit
-                            t.setAttribute( 'href', 'https://github.com/Michael-Allan/wayic.emacs/' );
+                            t.setAttribute( 'href', 'https://github.com/Michael-Allan/proto-wayic.emacs/' );
                             isCorrect_github = maybeFinished = true;
                         }
                     }
