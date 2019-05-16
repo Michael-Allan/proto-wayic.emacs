@@ -3,14 +3,14 @@
 ;; Usage for your Emacs configuration file:
 ;;
 ;;    (require 'wayscript-mode)
-;;    (add-to-list 'auto-mode-alist '("/waycast/.+\\.xht$" . wayscript-mode))
+;;    (add-to-list 'auto-mode-alist '("/proto-waycast/.+\\.xht$" . wayscript-mode))
 ;;
 ;; Working example:
 ;;     http://reluk.ca/.emacs
 ;;     http://reluk.ca/.Xresources
 ;;
 ;; Screen shot of the result, showing the font locking:
-;; http://reluk.ca/project/wayic/emacs/screen_shot.png
+;; http://reluk.ca/project/proto-wayic/emacs/screen_shot.png
 
 
 (define-derived-mode wayscript-mode html-mode
@@ -152,7 +152,7 @@
     (((class color) (background dark)) (:foreground "rgb:FF/00/00"))
     (t (:bold t :italic t)))
   "Wayscript face for attributes in the top namespace of Wayscript proper."
-    ;;; § Namespacing § hierarchy, http://reluk.ca/project/wayic/script/doc.task
+    ;;; § Namespacing § hierarchy, http://reluk.ca/project/proto-wayic/script/doc.task
   :group 'basic-faces)
 
 
