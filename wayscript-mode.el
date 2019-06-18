@@ -45,13 +45,13 @@
 
      ;; Waybit: Commitment jointer  (probable, root)
      ;; --------------------------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bway:join *= *\\(['\"]\\) *\\(/way\.xht#resolve\\) *\\2"
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bway:join *= *\\(['\"]\\) *\\(/way\\.xht#resolve\\) *\\2"
       1 'wayscript-commitment-face t)
 
      ;; Waybit: Step
      ;; ------------
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; Prefixed
-      (1 'wayscript-step-face t) (2 font-lock-comment-face t t) (3 'wayscript-step-accent-face t t))
+      (1 'wayscript-step-face t) (2 'font-lock-comment-face t t) (3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\) *data:,wayscript\\.bit\\.step *\\2"
       (1 'wayscript-step-face t)) ; Unprefixed singleton
 
