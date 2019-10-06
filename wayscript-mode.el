@@ -28,11 +28,11 @@
       ;;  Q  qualifying text
       (1 'wayscript-bracketing-face t) (2 'wayscript-group-face)
       (3 'wayscript-qualifying-text-face nil t))
-     ("</way:group\\(>\\)" 1 'wayscript-bracketing-face t) ; End tag
+     ("</way:group\\(>\\)" 1 'wayscript-bracketing-face t); End tag
 
      ;; HTML inclusion
      ;; --------------
-     ("<html:\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-html-face t) ; Start tag name
+     ("<html:\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-html-face t); Start tag name
 
      ;; Referential jointer
      ;; -------------------
@@ -41,7 +41,7 @@
 
      ;; Waybit
      ;; ------
-     ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t) ; Start tag name
+     ("<\\([_[:alpha:]][-._[:alnum:]]*\\)[ >\n]" 1 'wayscript-bit-face t); Start tag name
 
      ;; Waybit: Commitment jointer  (probable, root)
      ;; --------------------------
@@ -53,11 +53,7 @@
      ("<\\(step\\):\\(?:\\(_\\)\\|\\([_[:alpha:]][-._[:alnum:]]*\\)\\)\\(?:[ >\n]\\|/>\\)" ; Prefixed
       (1 'wayscript-step-face t) (2 'font-lock-comment-face t t) (3 'wayscript-step-accent-face t t))
      ("<\\([_[:alpha:]][-._[:alnum:]]*\\) [^>\n]*\\bxmlns=\\(['\"]\\) *data:,wayscript\\.bit\\.step *\\2"
-      (1 'wayscript-step-face t)) ; Unprefixed singleton
-
-     )
-   )
-  )
+      (1 'wayscript-step-face t))))); Unprefixed singleton
 
 
 
