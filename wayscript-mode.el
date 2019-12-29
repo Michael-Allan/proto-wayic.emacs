@@ -18,7 +18,7 @@
   "Major mode for editing Wayscript"
   (font-lock-add-keywords nil
     ;;; Use of *font-lock-defaults* might be preferable.  See however the related notes
-    ;;; in http://reluk.ca/sys/computer/Havoc/usr/local/share/emacs/site-lisp/js-mca-mode.el
+    ;;; in http://reluk.ca/sys/computer/workstation/etc/emacs/js-deprecated-mode.el
    '(
      ;; Composer
      ;; --------
